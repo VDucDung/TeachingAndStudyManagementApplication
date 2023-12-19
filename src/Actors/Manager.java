@@ -132,8 +132,8 @@ public class Manager {
 
     //Tạo dữ liệu ngẫu nhiên
     private static String generateRandomName() {
-        String[] firstNames = {"Trần", "Lê", "Phạm", "Hoàng", "Nguyễn", "Võ", "Ngô", "Đặng", "Bùi", "Huỳnh", "Vũ"};
-        String[] lastNames = {"Thị", "Văn", "Duy", "Hồng", "Linh", "Quốc", "Minh", "Hải", "Phương", "Thu", "Dũng", "Giang", "Hằng", "Nga"};
+        String[] firstNames = {"Trần Thị", "Lê Thị", "Phạm Văn", "Hoàng Quốc", "Nguyễn Võ", "Võ Thị", "Ngô gia", "Đặng Trung", "Bùi Thị", "Huỳnh Văn", "Vũ Văn"};
+        String[] lastNames = {"Bắc", "Huyền", "Duy", "Hồng", "Linh", "Quốc", "Minh", "Hải", "Phương", "Thu", "Dũng", "Giang", "Hằng", "Nga", "Phượng"};
 
         Random random = new Random();
         String firstName = firstNames[random.nextInt(firstNames.length)];

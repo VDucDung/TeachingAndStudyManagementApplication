@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Student implements Serializable {
+public class Student implements Serializable, Comparable<Student> {
 
     //properties
     private String stID;
@@ -104,4 +104,9 @@ public class Student implements Serializable {
         return Objects.equals(this.stID, other.stID);
     }
 
+    @Override
+    public int compareTo(Student o) {
+        return this.getStDepartment().compareTo(o.getStDepartment());
+    }
+    
 }

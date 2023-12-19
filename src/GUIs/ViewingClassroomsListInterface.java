@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -44,7 +45,7 @@ public class ViewingClassroomsListInterface extends javax.swing.JFrame {
     private void adjustColumnWidths() {
 
         TableColumnModel columnModel = tblClassrooms.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(50);
+        columnModel.getColumn(0).setPreferredWidth(70);
         columnModel.getColumn(1).setPreferredWidth(100);
         columnModel.getColumn(2).setPreferredWidth(150);
         columnModel.getColumn(3).setPreferredWidth(150);
@@ -83,11 +84,16 @@ public class ViewingClassroomsListInterface extends javax.swing.JFrame {
     }
 
     private void showClassInfoFrame(ArrayList<Student> listStudent) {
-        ViewingInformationClassroom infoFrame = new ViewingInformationClassroom(listStudent);
+        ArrayList<Student> sortListStudent = sortInfoStudentByName(listStudent);
+        ViewingInformationClassroom infoFrame = new ViewingInformationClassroom(sortListStudent);
         infoFrame.setVisible(true);
         this.setVisible(false);
     }
 
+    private ArrayList<Student> sortInfoStudentByName(ArrayList<Student> listStudent){
+         Collections.sort(listStudent);
+         return listStudent;
+    }
     public void showClassroomsList() {
 
         try {
@@ -133,6 +139,7 @@ public class ViewingClassroomsListInterface extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblClassrooms.setAutoCreateRowSorter(true);
         tblClassrooms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -170,25 +177,25 @@ public class ViewingClassroomsListInterface extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(624, 624, 624)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(283, 283, 283)
-                            .addComponent(jLabel1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(624, 624, 624)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 105, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(284, 284, 284))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(85, 85, 85))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
