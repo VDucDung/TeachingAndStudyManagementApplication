@@ -32,6 +32,15 @@ public class Student implements Serializable {
         this.stBatch = stBatch;
     }
 
+    public Student(String stID, String stName, String stGender, String stDepartment, String stAddress, String stPhoneNumber) {
+        this.stID = stID;
+        this.stName = stName;
+        this.stGender = stGender;
+        this.stDepartment = stDepartment;
+        this.stAddress = stAddress;
+        this.stPhoneNumber = stPhoneNumber;
+    }
+
     //getters
     public String getStID() {
         return stID;

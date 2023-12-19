@@ -3,24 +3,28 @@ package Actors;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-public class ClassTableModel extends AbstractTableModel {
+/**
+ *
+ * @author DUC DUNG
+ */
+public class InformatinClassTableModel extends AbstractTableModel {
 
     //properties
     //Khai báo mảng chứa các tiêu đề của các cột trong bảng
-    private String header[] = {"STT","Mã lớp", "Tên lớp", "Địa điểm", "Thời gian"};
+    private String header[] = {"STT","Mã sinh viên", "Tên sinh viên", "Giới tính", "Ngành học", "Địa chỉ", "Số điện thoại"};
     //Khai báo mảng chứa kiểu của dữ liệu trong từng cột của bảng
-    private Class classes[] = {Integer.class, String.class, String.class, String.class, String.class};
+    private Class infoClasses[] = {Integer.class,String.class, String.class, String.class, String.class, String.class, String.class};
     //Khai báo một cấu trúc dữ liệu làm NGUỒN dữ liệu cho bảng
-    private ArrayList<Classrooms> clList = new ArrayList<>();
+    private ArrayList<Student> infoClList = new ArrayList<>();
 
     //constructors
-    public ClassTableModel(ArrayList<Classrooms> clList) {
-        this.clList = clList;
+    public InformatinClassTableModel(ArrayList<Student> infoClList) {
+        this.infoClList = infoClList;
     }
 
     @Override
     public int getRowCount() {
-        return clList.size();
+        return infoClList.size();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -32,17 +36,22 @@ public class ClassTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        
         switch (columnIndex) {
-            case 0:
+             case 0:
                 return rowIndex + 1;
             case 1:
-                return clList.get(rowIndex).getClID();
+                return infoClList.get(rowIndex).getStID();
             case 2:
-                return clList.get(rowIndex).getClName();
+                return infoClList.get(rowIndex).getStName();
             case 3:
-                return clList.get(rowIndex).getClPlace();
+                return infoClList.get(rowIndex).getStGender();
             case 4:
-                return clList.get(rowIndex).getClTime();
+                return infoClList.get(rowIndex).getStDepartment();
+            case 5:
+                return infoClList.get(rowIndex).getStAddress();
+            case 6:
+                return infoClList.get(rowIndex).getStPhoneNumber();
             default:
                 return null;
         }
@@ -51,7 +60,7 @@ public class ClassTableModel extends AbstractTableModel {
 
     @Override
     public Class getColumnClass(int columnIndex) {
-        return classes[columnIndex];
+        return infoClasses[columnIndex];
 //return super.getColumnClass(columnIndex); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 

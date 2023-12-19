@@ -11,19 +11,26 @@ public class Classrooms implements Serializable {
     private String clName;
     private String clPlace;
     private String clTime;
+    private ArrayList<Student> students; 
+    
 
+   
     //constructors
     public Classrooms() {
     }
 
-    public Classrooms(String clID, String clName, String clPlace, String clTime) {
+    public Classrooms(String clID, String clName, String clPlace, String clTime, ArrayList<Student> students) {
         this.clID = clID;
         this.clName = clName;
         this.clPlace = clPlace;
         this.clTime = clTime;
+        this.students = students;
     }
 
     //getters
+     public ArrayList<Student> getStudents() {
+        return students;
+    }
     public String getClID() {
         return clID;
     }
