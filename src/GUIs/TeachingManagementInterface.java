@@ -170,15 +170,15 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         });
 
         btnSignOut1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut1.setText("CHỨC NĂNG 2");
+        btnSignOut1.setText("Tạo nhóm");
         btnSignOut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignOut1ActionPerformed(evt);
+                btnTaonhomActionPerformed(evt);
             }
         });
 
         btnSignOut2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut2.setText("CHỨC NĂNG 3");
+        btnSignOut2.setText("Xem danh sách nhóm");
         btnSignOut2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignOut2ActionPerformed(evt);
@@ -186,7 +186,7 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         });
 
         btnSignOut3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut3.setText("CHỨC NĂNG 4");
+        btnSignOut3.setText("Gửi tài liệu");
         btnSignOut3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignOut3ActionPerformed(evt);
@@ -194,7 +194,7 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         });
 
         btnSignOut4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut4.setText("CHỨC NĂNG 5");
+        btnSignOut4.setText("Xem báo cáo");
         btnSignOut4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignOut4ActionPerformed(evt);
@@ -202,10 +202,10 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         });
 
         btnSignOut5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut5.setText("CHỨC NĂNG 1");
+        btnSignOut5.setText("Xem danh sách lớp ");
         btnSignOut5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignOut5ActionPerformed(evt);
+                btnXemDSLopActionPerformed(evt);
             }
         });
 
@@ -295,9 +295,10 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         lblTcEmailDisplaying.setText(tcEmail);
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnSignOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOut1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignOut1ActionPerformed
+    private void btnTaonhomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaonhomActionPerformed
+        new GroupCreatingInterface().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTaonhomActionPerformed
 
     private void btnSignOut2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOut2ActionPerformed
         // TODO add your handling code here:
@@ -311,9 +312,10 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSignOut4ActionPerformed
 
-    private void btnSignOut5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOut5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignOut5ActionPerformed
+    private void btnXemDSLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemDSLopActionPerformed
+        new ViewingClassroomsListInterface().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnXemDSLopActionPerformed
 
     /**
      * @param args the command line arguments
