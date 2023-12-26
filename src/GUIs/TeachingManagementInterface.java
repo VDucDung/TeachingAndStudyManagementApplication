@@ -1,6 +1,6 @@
 package GUIs;
 
-import Actors.Account;
+import BaseClasses.Account;
 import java.awt.FlowLayout;
 import javax.swing.JOptionPane;
 
@@ -62,15 +62,16 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         lblTcPhoneNumberDisplaying = new javax.swing.JLabel();
         lblTcEmail = new javax.swing.JLabel();
         lblTcEmailDisplaying = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         btnSignOut = new javax.swing.JButton();
-        btnSignOut1 = new javax.swing.JButton();
-        btnSignOut2 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        btnCreateGroup = new javax.swing.JButton();
+        btnViewGroupList = new javax.swing.JButton();
         btnSignOut3 = new javax.swing.JButton();
-        btnSignOut4 = new javax.swing.JButton();
-        btnSignOut5 = new javax.swing.JButton();
+        btnViewReport = new javax.swing.JButton();
+        btnViewClassList = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GIAO DIỆN QUẢN LÝ GIẢNG DẠY");
         setBackground(new java.awt.Color(255, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -108,14 +109,42 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         lblTcID.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblTcID.setText("MÃ GIẢNG VIÊN:");
 
+        lblTcIDDisplaying.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblTcIDDisplaying.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTcIDDisplaying.setText("...");
+        lblTcIDDisplaying.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
         lblTcName.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblTcName.setText("TÊN GIẢNG VIÊN:");
+
+        lblTcNameDisplaying.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblTcNameDisplaying.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTcNameDisplaying.setText("...");
+        lblTcNameDisplaying.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         lblTcPhoneNumber.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblTcPhoneNumber.setText("SỐ ĐIỆN THOẠI:");
 
+        lblTcPhoneNumberDisplaying.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblTcPhoneNumberDisplaying.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTcPhoneNumberDisplaying.setText("...");
+        lblTcPhoneNumberDisplaying.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
         lblTcEmail.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblTcEmail.setText("EMAIL:");
+
+        lblTcEmailDisplaying.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblTcEmailDisplaying.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTcEmailDisplaying.setText("...");
+        lblTcEmailDisplaying.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        btnSignOut.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSignOut.setText("ĐĂNG XUẤT");
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -130,82 +159,82 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
                     .addComponent(lblTcEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 30, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTcNameDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTcIDDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTcPhoneNumberDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTcEmailDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addComponent(lblTcEmailDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTcNameDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(btnSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTcID, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(lblTcID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTcIDDisplaying, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTcName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTcNameDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTcName, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTcNameDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTcPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTcPhoneNumberDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTcEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTcEmailDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblTcPhoneNumberDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTcEmailDisplaying, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblTcPhoneNumber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTcEmail)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CHỨC NĂNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
-        btnSignOut.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut.setText("ĐĂNG XUẤT");
-        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateGroup.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCreateGroup.setText("TẠO NHÓM");
+        btnCreateGroup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignOutActionPerformed(evt);
+                btnCreateGroupListActionPerformed(evt);
             }
         });
 
-        btnSignOut1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut1.setText("Tạo nhóm");
-        btnSignOut1.addActionListener(new java.awt.event.ActionListener() {
+        btnViewGroupList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnViewGroupList.setText("XEM DS NHÓM");
+        btnViewGroupList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaonhomActionPerformed(evt);
-            }
-        });
-
-        btnSignOut2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut2.setText("Xem danh sách nhóm");
-        btnSignOut2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignOut2ActionPerformed(evt);
+                btnViewGroupListActionPerformed(evt);
             }
         });
 
         btnSignOut3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut3.setText("Gửi tài liệu");
+        btnSignOut3.setText("GỬI TÀI LIỆU");
         btnSignOut3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignOut3ActionPerformed(evt);
+                btnSendDocumentActionPerformed(evt);
             }
         });
 
-        btnSignOut4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut4.setText("Xem báo cáo");
-        btnSignOut4.addActionListener(new java.awt.event.ActionListener() {
+        btnViewReport.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnViewReport.setText("XEM BÁO CÁO");
+        btnViewReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignOut4ActionPerformed(evt);
+                btnViewReportActionPerformed(evt);
             }
         });
 
-        btnSignOut5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSignOut5.setText("Xem danh sách lớp ");
-        btnSignOut5.addActionListener(new java.awt.event.ActionListener() {
+        btnViewClassList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnViewClassList.setText("XEM DS LỚP");
+        btnViewClassList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXemDSLopActionPerformed(evt);
+                btnViewClassListActionPerformed(evt);
             }
         });
 
@@ -214,31 +243,29 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
+                .addContainerGap(208, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSignOut1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSignOut2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreateGroup, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewGroupList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSignOut3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSignOut4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSignOut5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSignOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnViewReport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewClassList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(190, 190, 190))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(btnSignOut5)
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(btnViewClassList, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSignOut1)
+                .addComponent(btnCreateGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSignOut2)
+                .addComponent(btnViewGroupList, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSignOut3)
+                .addComponent(btnSignOut3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSignOut4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSignOut)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addComponent(btnViewReport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -250,8 +277,7 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,14 +287,14 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,9 +306,9 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
 
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         // TODO add your handling code here:
-        int choice = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn đăng xuất?", "Đăng xuất!", JOptionPane.YES_NO_OPTION);
+        int choice = JOptionPane.showConfirmDialog(this, "BẠN CHẮC CHẮN MUỐN ĐĂNG XUẤT?", "ĐĂNG XUẤT!", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
-            new SignInInterface().setVisible(true);
+            new SigningInInterface().setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnSignOutActionPerformed
@@ -295,27 +321,39 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         lblTcEmailDisplaying.setText(tcEmail);
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnTaonhomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaonhomActionPerformed
-        new GroupCreatingInterface().setVisible(true);
+    private void btnCreateGroupListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateGroupListActionPerformed
+        new CreatingGroupInterface(lblTcIDDisplaying.getText()).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnTaonhomActionPerformed
+    }//GEN-LAST:event_btnCreateGroupListActionPerformed
 
-    private void btnSignOut2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOut2ActionPerformed
+    private void btnViewGroupListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewGroupListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignOut2ActionPerformed
-
-    private void btnSignOut3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOut3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignOut3ActionPerformed
-
-    private void btnSignOut4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOut4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignOut4ActionPerformed
-
-    private void btnXemDSLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemDSLopActionPerformed
-        new ViewingClassroomsListInterface().setVisible(true);
+        new ViewingGroupListInterface(lblTcIDDisplaying.getText(), "").setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnXemDSLopActionPerformed
+    }//GEN-LAST:event_btnViewGroupListActionPerformed
+
+    private void btnSendDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendDocumentActionPerformed
+        // TODO add your handling code here:
+        SendingDocumentInterface sentD = new SendingDocumentInterface();
+        sentD.setTcID(tcID);
+        sentD.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSendDocumentActionPerformed
+
+    private void btnViewReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewReportActionPerformed
+        // TODO add your handling code here:
+        ViewingReportInterface reportInterface = new ViewingReportInterface("");
+        reportInterface.setTcID(tcID);
+        reportInterface.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnViewReportActionPerformed
+
+    private void btnViewClassListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewClassListActionPerformed
+        ViewingClassListInterface clInterface = new ViewingClassListInterface();
+        clInterface.setTcID(tcID);
+        clInterface.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnViewClassListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,6 +382,8 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -354,12 +394,12 @@ public class TeachingManagementInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateGroup;
     private javax.swing.JButton btnSignOut;
-    private javax.swing.JButton btnSignOut1;
-    private javax.swing.JButton btnSignOut2;
     private javax.swing.JButton btnSignOut3;
-    private javax.swing.JButton btnSignOut4;
-    private javax.swing.JButton btnSignOut5;
+    private javax.swing.JButton btnViewClassList;
+    private javax.swing.JButton btnViewGroupList;
+    private javax.swing.JButton btnViewReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

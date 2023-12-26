@@ -1,7 +1,11 @@
 package GUIs;
 
-import Actors.Account;
+import BaseClasses.Account;
+import BaseClasses.SubjectClass;
+import Database.DBEngine;
+import BaseClasses.Student;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class StudyManagementInterface extends javax.swing.JFrame {
@@ -13,7 +17,7 @@ public class StudyManagementInterface extends javax.swing.JFrame {
     private String stGender;
     private String stClass;
     private String stDepartment;
-    private int stBatch;
+    private String stBatch;
     private String stPhoneNumber;
     private String stEmail;
     private String stAddress;
@@ -43,7 +47,7 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         return stDepartment;
     }
     
-    public int getStBatch() {
+    public String getStBatch() {
         return stBatch;
     }
     
@@ -84,7 +88,7 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         this.stDepartment = stDepartment;
     }
     
-    public void setStBatch(int stBatch) {
+    public void setStBatch(String stBatch) {
         this.stBatch = stBatch;
     }
     
@@ -133,15 +137,17 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         lblStClass = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         lblStBatch = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lblStPhoneNumber = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btnSignOut = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSendReport = new javax.swing.JButton();
+        xemTaiLieubtn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("GIAO DIỆN SINH VIÊN");
+        setTitle("GIAO DIỆN QUẢN LÝ HỌC TẬP");
         setBackground(new java.awt.Color(255, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -176,6 +182,9 @@ public class StudyManagementInterface extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
+        lblStID.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStID.setText("...");
+
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -194,17 +203,29 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         jLabel5.setText("GIỚI TÍNH:");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        lblStName.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStName.setText("...");
+
+        lblStGender.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStGender.setText("...");
+
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("KHOA:");
+        jLabel8.setText("NGÀNH HỌC:");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        lblStDepartment.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStDepartment.setText("...");
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("LỚP:");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        lblStClass.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStClass.setText("...");
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -213,8 +234,22 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         lblStBatch.setBackground(new java.awt.Color(255, 255, 255));
+        lblStBatch.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
         lblStBatch.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblStBatch.setText("...");
         lblStBatch.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText("SỐ ĐIỆN THOẠI:");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        lblStPhoneNumber.setBackground(new java.awt.Color(255, 255, 255));
+        lblStPhoneNumber.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStPhoneNumber.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblStPhoneNumber.setText("...");
+        lblStPhoneNumber.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -222,21 +257,23 @@ public class StudyManagementInterface extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblStID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblStName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblStGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblStDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblStClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblStBatch, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                    .addComponent(lblStBatch, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                    .addComponent(lblStPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -266,7 +303,11 @@ public class StudyManagementInterface extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(lblStBatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(lblStPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -297,24 +338,34 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Đăng ký nhóm");
-
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Báo cáo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("ĐĂNG KÝ NHÓM");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                dangKyNhombtnActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setText("Xem tài liệu");
+        btnSendReport.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSendReport.setText("BÁO CÁO");
+        btnSendReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendReportActionPerformed(evt);
+            }
+        });
+
+        xemTaiLieubtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        xemTaiLieubtn.setText("XEM TÀI LIỆU");
+        xemTaiLieubtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xemTaiLieubtnActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setText("Xem thông tin lớp");
+        jButton4.setText("XEM THÔNG TIN LỚP");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                xemThongTinActionPerformed(evt);
             }
         });
 
@@ -326,8 +377,8 @@ public class StudyManagementInterface extends javax.swing.JFrame {
                 .addContainerGap(137, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSendReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xemTaiLieubtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSignOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(89, 89, 89))
@@ -335,17 +386,17 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(12, 12, 12)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addGap(16, 16, 16)
-                .addComponent(btnSignOut)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xemTaiLieubtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSendReport, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -389,7 +440,7 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         int choice = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn đăng xuất?", "Đăng xuất!", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
-            new SignInInterface().setVisible(true);
+            new SigningInInterface().setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnSignOutActionPerformed
@@ -402,15 +453,46 @@ public class StudyManagementInterface extends javax.swing.JFrame {
         lblStDepartment.setText(stDepartment);
         lblStClass.setText(stClass);
         lblStBatch.setText(stBatch + "");
+        lblStPhoneNumber.setText(stPhoneNumber);
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSendReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendReportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new SendingReportInterface(stClass, "", stID).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSendReportActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void xemThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemThongTinActionPerformed
+        
+        ArrayList<SubjectClass> clList = new ArrayList<>();
+        try {
+            clList = (ArrayList<SubjectClass>) DBEngine.readObjectFromFile("C:\\Database\\CLASSES.txt");
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(this, "Lỗi kết nối cơ sở dữ liệu!");
+        }
+        for (var listClass : clList) {
+            if (listClass.getClName().equals(lblStClass.getText().trim())) {
+                new ViewingClassInfoInterface(listClass.getStudents(), "StudyManagement", getStID()).setVisible(true);
+                this.setVisible(false);
+                break;
+            }            
+            
+        }
+        
+    }//GEN-LAST:event_xemThongTinActionPerformed
+
+    private void xemTaiLieubtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemTaiLieubtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        new ViewingDocumentInterface(stID).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_xemTaiLieubtnActionPerformed
+
+    private void dangKyNhombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangKyNhombtnActionPerformed
+        // TODO add your handling code here:
+        new EnrollingGroupInterface(stClass, stID).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_dangKyNhombtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,14 +531,14 @@ public class StudyManagementInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSendReport;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -472,5 +554,7 @@ public class StudyManagementInterface extends javax.swing.JFrame {
     private javax.swing.JLabel lblStGender;
     private javax.swing.JLabel lblStID;
     private javax.swing.JLabel lblStName;
+    private javax.swing.JLabel lblStPhoneNumber;
+    private javax.swing.JButton xemTaiLieubtn;
     // End of variables declaration//GEN-END:variables
 }
